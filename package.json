@@ -1,0 +1,22 @@
+{
+  "name": "news-ai",
+  "version": "1.0.0",
+  "description": "키워드 기반 최근 7일 뉴스 요약·이슈 보고서·이메일 발송 서비스",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "verify-gemini": "node scripts/verify-gemini.js",
+    "verify-smtp": "node scripts/verify-smtp.js",
+    "test-email": "node scripts/test-email.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.24.0",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0",
+    "nodemailer": "^6.9.16"
+  }
+}

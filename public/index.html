@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="News_AI — 키워드 기반 최근 7일 뉴스 요약·이슈 보고서">
+  <title>News_AI · 키워드 뉴스 브리핑</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <div class="header-inner">
+        <a href="#" class="brand">
+          <span class="brand-icon" aria-hidden="true">N</span>
+          <span class="brand-text">
+            <strong>News_AI</strong>
+            <small>최근 7일 이슈 브리핑</small>
+          </span>
+        </a>
+        <span id="statusBadge" class="status-badge">연결 확인 중…</span>
+      </div>
+    </header>
+
+    <main class="main">
+      <section class="hero">
+        <p class="hero-tag">검색 시점 기준 · 최근 7일</p>
+        <h1 class="hero-title">관심 키워드의<br>핵심 뉴스를 한눈에</h1>
+        <p class="hero-desc">키워드를 입력하면 관련 뉴스 요약과 최신 이슈 보고서를 생성합니다. 이메일로도 바로 받아볼 수 있어요.</p>
+      </section>
+
+      <form id="searchForm" class="search-form">
+        <label class="search-label" for="keywordInput">검색 키워드</label>
+        <div class="search-row">
+          <input
+            type="search"
+            id="keywordInput"
+            class="search-input"
+            placeholder="예: AI, 반도체, 기후변화"
+            maxlength="100"
+            autocomplete="off"
+            required
+          >
+          <button type="submit" id="searchBtn" class="btn btn-primary">검색</button>
+        </div>
+        <div id="trendingSection" class="trending-section" aria-label="인기 검색 키워드">
+          <p class="trending-label">지금 많이 검색하는 키워드</p>
+          <div id="trendingKeywords" class="trending-chips"></div>
+        </div>
+        <div id="searchHistorySection" class="trending-section hidden" aria-label="최근 검색 기록">
+          <p class="trending-label">최근 검색</p>
+          <div id="searchHistory" class="trending-chips"></div>
+        </div>
+      </form>
+
+      <div id="alertBox" class="alert hidden" role="alert"></div>
+
+      <div id="loadingBox" class="loading hidden" aria-live="polite">
+        <span class="spinner" aria-hidden="true"></span>
+        <span>뉴스를 수집하고 요약하는 중…</span>
+      </div>
+
+      <section id="resultsSection" class="results hidden">
+        <div class="results-meta">
+          <p id="resultsMeta" class="results-meta-text"></p>
+        </div>
+
+        <section id="emailSection" class="panel panel--email hidden">
+          <div class="panel-head">
+            <h2 class="panel-title">이메일로 보고서 받기</h2>
+            <p class="panel-desc">입력한 주소로 한국어 HTML 보고서를 즉시 발송합니다</p>
+          </div>
+          <form id="emailForm" class="email-form">
+            <input
+              type="email"
+              id="emailInput"
+              class="email-input"
+              placeholder="you@email.com"
+              autocomplete="email"
+              maxlength="120"
+              required
+            >
+            <button type="submit" id="emailBtn" class="btn btn-secondary">보고서 발송</button>
+          </form>
+          <p id="emailHint" class="email-hint hidden"></p>
+        </section>
+
+        <section class="panel" aria-labelledby="newsTitle">
+          <div class="panel-head">
+            <h2 id="newsTitle" class="panel-title">관련 뉴스 요약</h2>
+            <p class="panel-desc">키워드와 관련된 최근 7일 뉴스 핵심 요약</p>
+          </div>
+          <div id="newsSummaries" class="news-grid"></div>
+        </section>
+
+        <section class="panel panel--report" aria-labelledby="reportTitle">
+          <div class="panel-head">
+            <h2 id="reportTitle" class="panel-title">최신 이슈 보고서</h2>
+            <p class="panel-desc">컨설팅 수준 전략 브리핑 · 핵심 요약 포함</p>
+          </div>
+          <article id="issueReport" class="report-card"></article>
+        </section>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>News_AI · Gemini 기반 뉴스 요약 · 출처 링크 포함</p>
+    </footer>
+  </div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
